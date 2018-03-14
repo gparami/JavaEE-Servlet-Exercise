@@ -42,12 +42,26 @@ public class LoginServlet extends HttpServlet {
 		//get servlet config init params
 		String userID = getServletConfig().getInitParameter("user");
 		String password = getServletConfig().getInitParameter("password");
+		
+		String artemID = "Just Batman";
+		String artemPWD = "artem";
+		
+		String paramiID = "parami";
+		String paramiPWD = "jee";
+		
+		String alexID = "alex";
+		String alexPWD = "alex";
+		
 		//logging example
 		log("User="+user+"::password="+pwd);
 		
 		if(userID.equals(user) && password.equals(pwd)){
-			response.sendRedirect("LoginSuccess.jsp");
-		}else{
+			response.sendRedirect("LoginSuccessParami.jsp");
+		} else if (artemID.equals(user) && artemPWD.equals(pwd)) {
+			response.sendRedirect("LoginSArtem.jsp");
+		} else if (alexID.equals(user) && alexPWD.equals(pwd)) {
+			response.sendRedirect("LoginSAlex.jsp");
+		} else {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
 			PrintWriter out= response.getWriter();
 			out.println("<font color=red>Either user name or password is wrong.</font>");
