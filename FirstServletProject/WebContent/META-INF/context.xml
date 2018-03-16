@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+
+ <Resource
+  name="DBSport"
+  auth="Container"
+  type="javax.sql.DataSource"
+  username="nbadraft"
+  password="sleeper"
+  driverClassName="org.postgresql.Driver"
+  url="jdbc:postgresql://DBPostgreSQL:5432/DBSport"
+  maxActive="1000"
+  maxIdle="30"
+  maxWait="10000"
+  factory="org.apache.commons.dbcp.BasicDataSourceFactory" 
+  logValidationErrors="true" 
+ >
+ </Resource>
+
+
+</Context>
