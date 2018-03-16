@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 		description = "Login Servlet", 
 		urlPatterns = { "/LoginServlet" }, 
 		initParams = { 
-				@WebInitParam(name = "user", value = "Parami"), 
+				@WebInitParam(name = "user", value = "Parami" ), 
 				@WebInitParam(name = "password", value = "jee")
 		})
 public class LoginServlet extends HttpServlet {
@@ -31,7 +31,6 @@ public class LoginServlet extends HttpServlet {
 		getServletContext().setAttribute("DB_Success", "True");
 		else throw new ServletException("DB Connection error");
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -55,12 +54,10 @@ public class LoginServlet extends HttpServlet {
 		//logging example
 		log("User="+user+"::password="+pwd);
 		
-		if(userID.equals(user) && password.equals(pwd)){
-			response.sendRedirect("LoginSuccessParami.jsp");
-		} else if (artemID.equals(user) && artemPWD.equals(pwd)) {
-			response.sendRedirect("LoginSArtem.jsp");
-		} else if (alexID.equals(user) && alexPWD.equals(pwd)) {
-			response.sendRedirect("LoginSAlex.jsp");
+		if(userID.equals(user) && password.equals(pwd) || artemID.equals(user) && artemPWD.equals(pwd) || alexID.equals(user) && alexPWD.equals(pwd)){
+			request.setAttribute("name", user);
+			request.getRequestDispatcher("LoginSuccess.jsp").forward(request, response);
+//			response.sendRedirect("LoginSuccess.jsp");
 		} else {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
 			PrintWriter out= response.getWriter();
